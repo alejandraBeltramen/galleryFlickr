@@ -1,0 +1,16 @@
+<ion-view view-title="Gallery">
+    <ion-content padding="true">
+
+        <!--Listado de Albumes-->
+        <ion-card ng-repeat="album in gallery">
+            <!--TO DO poner una imagen del album de fondo-->
+            <!--<img src="img/card-saopaolo.png" />-->
+            <div class="card-title">{{album.title._content}}</div>
+
+            <!--ver de que no sea muy grande porque sino va a sobrepasar la imagen, 
+            deberia mostrar hasta un punto y luego "..." -->
+            <div class="card-subtitle">{{album.description._content}}</div>
+        </ion-card>
+
+    </ion-content>
+</ion-view>

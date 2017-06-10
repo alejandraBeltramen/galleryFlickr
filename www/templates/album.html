@@ -1,0 +1,22 @@
+<ion-view view-title="{{titulo}}">
+    <ion-content padding="true" class="card-background-page">
+
+        <!--Listado de Fotos-->
+        <ion-card ng-repeat="photo in album">
+            <!--TO DO obtener imagen-->
+            <!--<img src="img/advance-card-bttf.png">-->
+
+            <ion-row>
+                <ion-col>
+                    <!--ponerle un href al boton para que lo dirija a los comentarios de esa foto-->
+                    <button ion-button icon-left clear small>
+                        <ion-icon name="text"></ion-icon>
+                        <div>Comentarios</div>
+                    </button>
+                </ion-col>
+            </ion-row>
+
+        </ion-card>
+
+    </ion-content>
+</ion-view>

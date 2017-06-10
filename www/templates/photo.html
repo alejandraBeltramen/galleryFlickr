@@ -1,0 +1,14 @@
+<ion-view view-title="Comentarios">
+    <ion-content padding="true">
+
+        <!--TO DO obtener imagen-->
+        <img src="img/marty-avatar.png">
+
+        <!--comentarios-->
+        <ion-list ng-repeat="comentario in comentarios">
+            <h2>{{comentario.authorname}}</h2>
+            <p>{{comentario._content}}</p>
+        </ion-list>
+
+    </ion-content>
+</ion-view>
