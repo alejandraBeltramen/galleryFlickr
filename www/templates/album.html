@@ -2,9 +2,10 @@
     <ion-content padding="true" class="card-background-page">
 
         <!--Listado de Fotos-->
-        <ion-card ng-repeat="photo in album">
+        <ion-card class="card" ng-repeat="photo in album">
             <!--TO DO obtener imagen-->
             <!--<img src="img/advance-card-bttf.png">-->
+            <img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg">
 
             <ion-row>
                 <ion-col>

@@ -5,7 +5,7 @@
         <ion-card class="card" ng-repeat="album in gallery">
             <!--TO DO poner una imagen del album de fondo-->
             <img ng-src="https://farm{{album.farm}}.staticflickr.com/{{album.server}}/{{album.primary}}_{{album.secret}}.jpg"
-                 ng-click="onAlbumClick()" />
+                 ng-click="onAlbumClick('{{album.id}}')" />
             <div class="card-title">{{album.title._content}}</div>
             <!--ver de que no sea muy grande porque sino va a sobrepasar la imagen, 
             deberia mostrar hasta un punto y luego "..." -->

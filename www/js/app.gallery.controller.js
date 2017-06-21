@@ -3,17 +3,18 @@ angular.module('galeriaFlikrApp')
         $scope.titulo = "Gallery";
 
         //cargar los albumes de la galeria 
-         if ($stateParams.id) {
+         //if ($stateParams.id) {
             showIonicLoading()
                 .then(obtenerAlbumes) //deberia retornar _gallery para que lo tome la siguiente promesa en su parametro
                 // .then(inicializarOpciones)
                 .then(function(_gallery) {
+                    console.log(_gallery);
                     $scope.gallery = _gallery;
                     $scope.onAlbumClick = onAlbumClick; 
                 })
                 .then($ionicLoading.hide)
                 .catch($ionicLoading.hide);
-        }
+        //}
 
         function obtenerAlbumes() {
             // return gallerySvc.getAlbumes($stateParams.id);
@@ -26,7 +27,10 @@ angular.module('galeriaFlikrApp')
             });
         };
 
-        function onAlbumClick() {
+
+        function onAlbumClick (id){
             console.log("click en album");
+            console.log(id);
+            return $state.go('app.album', {'albumId': id});
         };
     });

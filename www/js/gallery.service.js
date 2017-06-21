@@ -7,10 +7,16 @@ angular.module('galeriaFlikrApp')
         //     id: "",
         //     secret: ""
         // } 
+        var flickr = {};
+        flickr.api = 'ed63c482172c41cc603ea3a1bdb01012';
+        flickr.user_id = '150263346%40N03';
+        flickr.format = 'json';
+        flickr.endpoint = 'https://api.flickr.com/services/rest/';
 
         //obtiene todos los albumes de fotos para el user harcodeado
         this.getAlbumes = function() {
-            return $http.get(baseUrl).then(function (respuesta) {
+            var url = flickr.endpoint+'?method=flickr.photosets.getList&api_key='+flickr.api+'&user_id='+flickr.user_id+'&format='+flickr.format+'&nojsoncallback=1';
+            return $http.get(url).then(function (respuesta) {
                 return _.cloneDeep(respuesta.data.photosets.photoset);
             });
         };
