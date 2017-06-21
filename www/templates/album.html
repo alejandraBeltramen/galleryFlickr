@@ -1,6 +1,22 @@
 <ion-view view-title="{{titulo}}">
     <ion-content padding="true" class="card-background-page">
-
+        <ion-list>
+            <ion-item>
+                <ion-label>Ordenar por</ion-label>
+                <ion-select [(ngModel)]="ordenar">
+                    <ion-option value="fecha">Fecha de Creacion</ion-option>
+                    <ion-option value="nombre">Nombre</ion-option>
+                </ion-select>
+            </ion-item>
+            <!--ESTO SE DEBERIA SACAR PORQUE VA A ESTAR CONTEMPLADO EN EL SELECT DE ARRIBA-->
+            <!--LO PONGO PARA PROBAR LA FUNCIONALIDAD EN BROWSER-->
+            <button ng-click="ordenarPorFecha()">
+                <div>Ordenar por fecha</div>
+            </button>
+            <button ng-click="ordenarPorNombre()">
+                <div>Ordenar por Nombre</div>
+            </button>
+        </ion-list>
         <!--Listado de Fotos-->
         <ion-card class="card" ng-repeat="foto in fotos">
             <!--TO DO obtener imagen-->
@@ -8,13 +24,27 @@
             <img ng-src="https://farm{{foto.farm}}.staticflickr.com/{{foto.server}}/{{foto.id}}_{{foto.secret}}.jpg">
 
             <ion-row>
+                <!--nombre de la foto-->
+                <div>{{foto.title}}</div>
                 <ion-col>
-                    <!--ponerle un href al boton para que lo dirija a los comentarios de esa foto-->
-                    <!--href="#/app/gallery/{{album.id}}/{{foto.id}}"-->
+                    <button ion-button icon-left clear small
+                            href="https://farm{{foto.farm}}.staticflickr.com/{{foto.server}}/{{foto.id}}_{{foto.secret}}.jpg">
+                        <ion-icon name="md-browsers"></ion-icon>
+                        <div>Abrir en Browser</div>
+                    </button>
+                </ion-col>
+                <ion-col>
                     <button ion-button icon-left clear small
                             ng-click="onFotoClick('{{album.id}}','{{foto.id}}')">
                         <ion-icon name="text"></ion-icon>
                         <div>Comentarios</div>
+                    </button>
+                </ion-col>
+                <ion-col center text-center>
+                    <!--Debería permitir enviar esta foto por email-->
+                    <button ion-button icon-left clear small
+                            ng-click="">
+                        <ion-icon name="md-mail"></ion-icon>
                     </button>
                 </ion-col>
             </ion-row>

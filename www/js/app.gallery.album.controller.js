@@ -10,6 +10,7 @@ angular.module('galeriaFlikrApp')
                     $scope.album = _album;
                     $scope.titulo = _album.title;
                     $scope.fotos = _album.photo;
+                    cargarFechas();
                 })
                 .then($ionicLoading.hide)
                 .catch($ionicLoading.hide);
@@ -29,5 +30,21 @@ angular.module('galeriaFlikrApp')
             console.log("click en foto");
             console.log(albumId, fotoId);
             return $state.go('app.photo', {'albumId': albumId, 'photoId': fotoId});
+        };
+
+        $scope.ordenarPorFecha = function() {
+            var ordenado = _.sortBy($scope.fotos, 'fecha.$$state.value');
+            $scope.fotos = ordenado;
+        };
+
+        $scope.ordenarPorNombre = function() {
+            var ordenado = _.sortBy($scope.fotos, 'title');
+            $scope.fotos = ordenado;
+        };
+
+        function cargarFechas() {
+            for(i in $scope.fotos){
+                $scope.fotos[i].fecha = albumSvc.getFecha($scope.fotos[i].id);
+            }
         };
     });
