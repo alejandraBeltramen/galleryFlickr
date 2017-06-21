@@ -25,7 +25,7 @@ angular.module('galeriaFlikrApp')
             });
         };
 
-        function onFotoClick(albumId, fotoId) {
+        $scope.onFotoClick = function onFotoClick(albumId, fotoId) {
             console.log("click en foto");
             console.log(albumId, fotoId);
             return $state.go('app.photo', {'albumId': albumId, 'photoId': fotoId});
