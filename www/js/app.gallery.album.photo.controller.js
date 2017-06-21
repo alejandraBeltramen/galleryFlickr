@@ -1,4 +1,4 @@
-angular.module('galeriaFlikr')
+angular.module('galeriaFlikrApp')
     .controller("PhotoCtrl", function($scope, $state, $stateParams, $ionicLoading, photoSvc) {
         $scope.titulo = "Photo";
 

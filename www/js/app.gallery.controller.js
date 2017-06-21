@@ -1,4 +1,4 @@
-angular.module('galeriaFlikr')
+angular.module('galeriaFlikrApp')
     .controller("GalleryCtrl", function($scope, $state, $stateParams, $ionicLoading, gallerySvc) {
         $scope.titulo = "Gallery";
 
@@ -9,7 +9,7 @@ angular.module('galeriaFlikr')
                 // .then(inicializarOpciones)
                 .then(function(_gallery) {
                     $scope.gallery = _gallery;
-                    console.log($scope.gallery);
+                    $scope.onAlbumClick = onAlbumClick; 
                 })
                 .then($ionicLoading.hide)
                 .catch($ionicLoading.hide);
@@ -24,5 +24,9 @@ angular.module('galeriaFlikr')
             return $ionicLoading.show({
                 template: '<ion-spinner icon="lines"/>'
             });
+        };
+
+        function onAlbumClick() {
+            console.log("click en album");
         };
     });

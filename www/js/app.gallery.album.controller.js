@@ -1,4 +1,4 @@
-angular.module('galeriaFlikr')
+angular.module('galeriaFlikrApp')
     .controller("AlbumCtrl", function($scope, $state, $stateParams, $ionicLoading, albumsvc) {
         $scope.titulo = "Album";
 

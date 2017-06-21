@@ -2,15 +2,21 @@
     <ion-content padding="true">
 
         <!--Listado de Albumes-->
-        <ion-card ng-repeat="album in gallery">
+        <ion-card class="card" ng-repeat="album in gallery">
             <!--TO DO poner una imagen del album de fondo-->
-            <!--<img src="img/card-saopaolo.png" />-->
+            <img ng-src="https://farm{{album.farm}}.staticflickr.com/{{album.server}}/{{album.primary}}_{{album.secret}}.jpg"
+                 ng-click="onAlbumClick()" />
             <div class="card-title">{{album.title._content}}</div>
-
             <!--ver de que no sea muy grande porque sino va a sobrepasar la imagen, 
             deberia mostrar hasta un punto y luego "..." -->
-            <div class="card-subtitle">{{album.description._content}}</div>
+            <div class="card-subtitle">{{album.count_comments}} comentarios - {{album.count_views}} vistas</div>
         </ion-card>
+
+        <!--<ion-list>
+            <button ion-item ng-repeat="album in gallery"">
+                {{album.title._content}}
+            </button>
+        </ion-list>-->
 
     </ion-content>
 </ion-view>
