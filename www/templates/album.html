@@ -1,16 +1,18 @@
-<ion-view view-title="{{titulo}}">
+<ion-view view-title="Album: {{titulo}}">
     <ion-content padding="true" class="card-background-page">
 
         <!--Listado de Fotos-->
-        <ion-card class="card" ng-repeat="photo in album">
+        <ion-card class="card" ng-repeat="foto in fotos">
             <!--TO DO obtener imagen-->
             <!--<img src="img/advance-card-bttf.png">-->
-            <img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg">
+            <img ng-src="https://farm{{foto.farm}}.staticflickr.com/{{foto.server}}/{{foto.id}}_{{foto.secret}}.jpg">
 
             <ion-row>
                 <ion-col>
                     <!--ponerle un href al boton para que lo dirija a los comentarios de esa foto-->
-                    <button ion-button icon-left clear small>
+                    <!--href="#/app/gallery/{{album.id}}/{{foto.id}}"-->
+                    <button ion-button icon-left clear small
+                            ng-click="onFotoClick('{{album.id}}','{{foto.id}}')">
                         <ion-icon name="text"></ion-icon>
                         <div>Comentarios</div>
                     </button>

@@ -5,7 +5,8 @@ angular.module('galeriaFlikrApp')
 
         var flickr = {};
         flickr.api = ['ed63c482172c41cc603ea3a1bdb01012', '3e07ba483c2acaffd8578aede8a43752'];
-        flickr.user_id = '150263346%40N03';
+        //flickr.user_id = '150263346%40N03'; //afua
+        flickr.user_id = '44947048@N00';
         flickr.format = 'json';
         flickr.endpoint = 'https://api.flickr.com/services/rest/';
 
@@ -15,7 +16,7 @@ angular.module('galeriaFlikrApp')
             console.log(url);
             return $http.get(url).then(function (respuesta) {
                 console.log(respuesta);
-                return _.cloneDeep(respuesta.data.photoset.photo);
+                return _.cloneDeep(respuesta.data.photoset);
             });
         };
     });
