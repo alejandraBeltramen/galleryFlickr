@@ -21,11 +21,11 @@
         <ion-card class="card" ng-repeat="foto in fotos">
             <!--TO DO obtener imagen-->
             <!--<img src="img/advance-card-bttf.png">-->
-            <img ng-src="https://farm{{foto.farm}}.staticflickr.com/{{foto.server}}/{{foto.id}}_{{foto.secret}}.jpg">
+            <img ng-src="https://farm{{foto.farm}}.staticflickr.com/{{foto.server}}/{{foto.id}}_{{foto.secret}}_n.jpg">
 
             <ion-row>
                 <!--nombre de la foto-->
-                <div>{{foto.title}}</div>
+                <div class="card-title">{{foto.title}}</div>
                 <ion-col>
                     <button ion-button icon-left clear small
                             href="https://farm{{foto.farm}}.staticflickr.com/{{foto.server}}/{{foto.id}}_{{foto.secret}}.jpg">

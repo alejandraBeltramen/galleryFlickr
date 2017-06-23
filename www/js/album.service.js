@@ -25,8 +25,9 @@ angular.module('galeriaFlikrApp')
          * Se recibe por parametro el id de la foto.
          */
         this.getFecha = function(id) {
-            var url = flickr.endpoint+'?method=flickr.photos.getInfo&api_key='+flickr.api[2]+'&photo_id='+id+'&format=json&nojsoncallback=1';
+            var url = flickr.endpoint+'?method=flickr.photos.getInfo&api_key='+flickr.api[0]+'&photo_id='+id+'&format=json&nojsoncallback=1';
             return $http.get(url).then(function (respuesta) {
+                console.log(respuesta);
                 return _.cloneDeep(respuesta.data.photo.dates.taken);
             });
         }
