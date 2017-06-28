@@ -27,8 +27,8 @@
                 <!--nombre de la foto-->
                 <div class="card-title">{{foto.title}}</div>
                 <ion-col>
-                    <button ion-button icon-left clear small
-                            href="https://farm{{foto.farm}}.staticflickr.com/{{foto.server}}/{{foto.id}}_{{foto.secret}}.jpg">
+                    <button class="ion-button icon-left clear small"
+                            ng-click="openOnBrowser('https://farm{{foto.farm}}.staticflickr.com/{{foto.server}}/{{foto.id}}_{{foto.secret}}.jpg')">
                         <ion-icon name="md-browsers"></ion-icon>
                         <div>Abrir en Browser</div>
                     </button>
@@ -43,8 +43,8 @@
                 <ion-col center text-center>
                     <!--Debería permitir enviar esta foto por email-->
                     <button ion-button icon-left clear small
-                            ng-click="">
-                        <ion-icon name="md-mail"></ion-icon>
+                            ng-click="sendEmail()">
+                        <ion-icon name="md-mail">Email</ion-icon>
                     </button>
                 </ion-col>
             </ion-row>

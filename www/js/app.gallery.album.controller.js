@@ -42,6 +42,10 @@ angular.module('galeriaFlikrApp')
             $scope.fotos = ordenado;
         };
 
+        $scope.openOnBrowser = function (url) {
+            window.open(url, '_system');
+        };
+
         function cargarFechas() {
             for(i in $scope.fotos){
                 $scope.fotos[i].fecha = albumSvc.getFecha($scope.fotos[i].id);
