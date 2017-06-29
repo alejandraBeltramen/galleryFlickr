@@ -2,19 +2,19 @@
     <ion-content padding="true" class="card-background-page">
         <ion-list>
             <ion-item>
-                <ion-label>Ordenar por</ion-label>
+                <ion-label>{{'etiqueta_ordenar' | translate}}</ion-label>
                 <ion-select [(ngModel)]="ordenar">
-                    <ion-option value="fecha">Fecha de Creacion</ion-option>
-                    <ion-option value="nombre">Nombre</ion-option>
+                    <ion-option value="fecha">{{'etiqueta_fechacreacion' | translate}}</ion-option>
+                    <ion-option value="nombre">{{'etiqueta_nombre' | translate}}</ion-option>
                 </ion-select>
             </ion-item>
             <!--ESTO SE DEBERIA SACAR PORQUE VA A ESTAR CONTEMPLADO EN EL SELECT DE ARRIBA-->
             <!--LO PONGO PARA PROBAR LA FUNCIONALIDAD EN BROWSER-->
             <button ng-click="sortByDate()">
-                <div>Ordenar por fecha</div>
+                <div>{{'etiqueta_ordenarporfecha' | translate}}</div>
             </button>
             <button ng-click="sortByName()">
-                <div>Ordenar por Nombre</div>
+                <div>{{'etiqueta_ordenarpornombre' | translate}}</div>
             </button>
         </ion-list>
         <!--Listado de Fotos-->
@@ -30,21 +30,21 @@
                     <button class="ion-button icon-left clear small"
                             ng-click="openOnBrowser('https://farm{{foto.farm}}.staticflickr.com/{{foto.server}}/{{foto.id}}_{{foto.secret}}.jpg')">
                         <ion-icon name="md-browsers"></ion-icon>
-                        <div>Abrir en Browser</div>
+                        <div>{{'etiqueta_abrirenbrowser' | translate}}</div>
                     </button>
                 </ion-col>
                 <ion-col>
                     <button ion-button icon-left clear small
                             ng-click="onFotoClick('{{album.id}}','{{foto.id}}')">
                         <ion-icon name="text"></ion-icon>
-                        <div>Comentarios</div>
+                        <div>{{'etiqueta_comentarios' | translate}}</div>
                     </button>
                 </ion-col>
                 <ion-col center text-center>
                     <!--Debería permitir enviar esta foto por email-->
                     <button ion-button icon-left clear small
                             ng-click="sendEmail('https://farm{{foto.farm}}.staticflickr.com/{{foto.server}}/{{foto.id}}_{{foto.secret}}.jpg')">
-                        <ion-icon name="md-mail">Email</ion-icon>
+                        <ion-icon name="md-mail">{{'etiqueta_email' | translate}}</ion-icon>
                     </button>
                 </ion-col>
             </ion-row>

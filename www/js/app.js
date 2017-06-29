@@ -22,9 +22,46 @@ angular.module('galeriaFlikrApp', ['ionic', 'pascalprecht.translate'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
+.config(function($stateProvider, $urlRouterProvider, translateProvider) {
+    $translateProvider.translations('es', {
+      etiqueta_comentarios: "Comentarios",
+      etiqueta_vistas: "Vistas",
+      etiqueta_galeria: "Galeria",
+      etiqueta_preferencia: "Preferencias",
+      etiqueta_ordenar: "Ordernar por",
+      etiqueta_fechacreacion: "Fecha de Creacion",
+      etiqueta_nombre: "Nombre",
+      etiqueta_ordenarporfecha: "Ordenar por fecha",
+      etiqueta_ordenarpornombre: "Ordenar por nombre",
+      etiqueta_abrirenbrowser: "Abrir en Browser",
+      etiqueta_email: "Email",
+      etiqueta_preferencias: "Preferencias",
+      etiqueta_lenguajes: "Lenguajes",
+      etiqueta_español: "Español",
+      etiqueta_ingles: "Ingles"
+    });
+    $translateProvider.translations('en', {
+      etiqueta_comentarios: "Comments",
+      etiqueta_vistas: "Views",
+      etiqueta_galeria: "Gallery",
+      etiqueta_preferencia: "Preferences",
+      etiqueta_ordenar: "Order by",
+      etiqueta_fechacreacion: "Creation Date",
+      etiqueta_nombre: "Name",
+      etiqueta_ordenarporfecha: "Order by Date",
+      etiqueta_ordenarpornombre: "Order by Name",
+      etiqueta_abrirenbrowser: "Open in Browser",
+      etiqueta_email: "Email",
+      etiqueta_preferencias: "Preferences",
+      etiqueta_lenguajes: "Languages",
+      etiqueta_español: "Spanish",
+      etiqueta_ingles: "English"
+    });
+    $translateProvider.preferredLanguage("es");
+    $translateProvider.fallbackLanguage("es");
 
+
+  $stateProvider
     .state('app', {
     url: '/app',
     abstract: true,
