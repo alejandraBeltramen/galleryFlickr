@@ -1,23 +1,27 @@
 angular.module('galeriaFlikrApp')
-    .controller("GalleryCtrl", function($scope, $state, $stateParams, $ionicLoading, gallerySvc) {
+    .controller("GalleryCtrl", function($scope, $state, $stateParams, $ionicLoading, gallerySvc, storageSvc) {
         $scope.titulo = "Gallery";
 
         //cargar los albumes de la galeria 
          //if ($stateParams.id) {
-            showIonicLoading()
-                .then(obtenerAlbumes) //deberia retornar _gallery para que lo tome la siguiente promesa en su parametro
-                // .then(inicializarOpciones)
-                .then(function(_gallery) {
+
+            if(navigator.connection.type !== Connection.NONE) {
+                showIonicLoading()
+                .then(obtenerAlbumes)
+                .then(function (_gallery){
                     console.log(_gallery);
                     $scope.gallery = _gallery;
-                    $scope.onAlbumClick = onAlbumClick; 
+                    $scope.onAlbumClick = onAlbumClick;
+                    setAlbumList(_gallery);
                 })
                 .then($ionicLoading.hide)
                 .catch($ionicLoading.hide);
-        //}
+            } else {
+                getAlbumList();
+            }
+            
 
         function obtenerAlbumes() {
-            // return gallerySvc.getAlbumes($stateParams.id);
             return gallerySvc.getAlbumes();            
         };
 
@@ -27,10 +31,22 @@ angular.module('galeriaFlikrApp')
             });
         };
 
-
         function onAlbumClick (id){
             console.log("click en album");
             console.log(id);
             return $state.go('app.album', {'albumId': id});
+        };
+
+        function setAlbumList(gallery) {
+            storageSvc.setAlbumList(gallery).then(function(resultado) {
+            console.log("Guardado");
+            });
+        };
+
+        function getAlbumList () {
+            storageSvc.getAlbumList().then(function(resultado) {
+                $scope.gallery = resultado;
+                console.log("Se obtuvieron los PgotoSets");
+            });
         };
     });

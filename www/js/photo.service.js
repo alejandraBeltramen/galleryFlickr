@@ -12,7 +12,6 @@ angular.module('galeriaFlikrApp')
         //obtiene todos los comentarios para la foto indicada
         this.getComments = function (id) {
             var url = flickr.endpoint+'?method=flickr.photos.comments.getList&api_key='+flickr.api[0]+'&photo_id='+id+'&format=json&nojsoncallback=1';
-            console.log(url);
             return $http.get(url).then(function (respuesta) {
                 return _.cloneDeep(respuesta.data.comments);
             });

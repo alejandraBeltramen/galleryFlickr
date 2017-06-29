@@ -13,9 +13,7 @@ angular.module('galeriaFlikrApp')
         //obtiene todas las fotos para el id del album indicado
         this.getPhotos = function (id) {
             var url = flickr.endpoint+'?method=flickr.photosets.getPhotos&api_key='+flickr.api[0]+'&photoset_id='+id+'&user_id='+flickr.user_id+'&format='+flickr.format+'&nojsoncallback=1';
-            console.log(url);
             return $http.get(url).then(function (respuesta) {
-                console.log(respuesta);
                 return _.cloneDeep(respuesta.data.photoset);
             });
         };
@@ -27,7 +25,6 @@ angular.module('galeriaFlikrApp')
         this.getFecha = function(id) {
             var url = flickr.endpoint+'?method=flickr.photos.getInfo&api_key='+flickr.api[0]+'&photo_id='+id+'&format=json&nojsoncallback=1';
             return $http.get(url).then(function (respuesta) {
-                console.log(respuesta);
                 return _.cloneDeep(respuesta.data.photo.dates.taken);
             });
         }

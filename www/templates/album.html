@@ -10,10 +10,10 @@
             </ion-item>
             <!--ESTO SE DEBERIA SACAR PORQUE VA A ESTAR CONTEMPLADO EN EL SELECT DE ARRIBA-->
             <!--LO PONGO PARA PROBAR LA FUNCIONALIDAD EN BROWSER-->
-            <button ng-click="ordenarPorFecha()">
+            <button ng-click="sortByDate()">
                 <div>Ordenar por fecha</div>
             </button>
-            <button ng-click="ordenarPorNombre()">
+            <button ng-click="sortByName()">
                 <div>Ordenar por Nombre</div>
             </button>
         </ion-list>
@@ -43,7 +43,7 @@
                 <ion-col center text-center>
                     <!--Debería permitir enviar esta foto por email-->
                     <button ion-button icon-left clear small
-                            ng-click="sendEmail()">
+                            ng-click="sendEmail('https://farm{{foto.farm}}.staticflickr.com/{{foto.server}}/{{foto.id}}_{{foto.secret}}.jpg')">
                         <ion-icon name="md-mail">Email</ion-icon>
                     </button>
                 </ion-col>

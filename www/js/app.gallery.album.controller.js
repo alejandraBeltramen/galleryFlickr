@@ -1,6 +1,5 @@
 angular.module('galeriaFlikrApp')
     .controller("AlbumCtrl", function($scope, $state, $stateParams, $ionicLoading, albumSvc) {
-        console.log($stateParams.albumId);
         //cargar las fotos del album 
          if ($stateParams.albumId) {
             showIonicLoading()
@@ -10,7 +9,7 @@ angular.module('galeriaFlikrApp')
                     $scope.album = _album;
                     $scope.titulo = _album.title;
                     $scope.fotos = _album.photo;
-                    cargarFechas();
+                    loadDates();
                 })
                 .then($ionicLoading.hide)
                 .catch($ionicLoading.hide);
@@ -32,12 +31,12 @@ angular.module('galeriaFlikrApp')
             return $state.go('app.photo', {'albumId': albumId, 'photoId': fotoId});
         };
 
-        $scope.ordenarPorFecha = function() {
+        $scope.sortByDate = function() {
             var ordenado = _.sortBy($scope.fotos, 'fecha.$$state.value');
             $scope.fotos = ordenado;
         };
 
-        $scope.ordenarPorNombre = function() {
+        $scope.sortByName = function() {
             var ordenado = _.sortBy($scope.fotos, 'title');
             $scope.fotos = ordenado;
         };
@@ -46,9 +45,17 @@ angular.module('galeriaFlikrApp')
             window.open(url, '_system');
         };
 
-        function cargarFechas() {
+        $scope.sendEmail = function(urlImage) {
+            var message = 'Hola! te envio esta foto que encontré en Flickr: ' + urlImage;
+                window.plugins.socialsharing.shareViaEmail(message, 'Imagen Flickr', null, null, null, null, function(success){console.log('enviado con exito');}, function(err){console.log('error no enviado')});
+            };
+
+
+        function loadDates() {
             for(i in $scope.fotos){
                 $scope.fotos[i].fecha = albumSvc.getFecha($scope.fotos[i].id);
             }
         };
+
+
     });
