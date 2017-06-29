@@ -62,4 +62,26 @@ angular.module('galeriaFlikrApp', ['ionic'])
   $urlRouterProvider.otherwise('/app/gallery');
 
   
+})
+
+.run(function notificacion($ionicPopup) {
+  document.addEventListener("offline", onOffline, false);
+  function onOffline() {
+    $ionicPopup.alert({
+      title: 'Está en modo Offline',
+      template: 'Podra acceder a lo que tiene almacenado unicamente'
+    });
+
+    var fecha = new Date();
+    //var iconoNotificacion = "res://ic_notif_flickdsm";
+    var icono = "file:/resources/android/icon/notification//ic_notif_flickdsm";
+    cordova.plugins.notification.local.schedule({
+      id: 1,
+      title: "Flickr",
+      message: "Conectese a una conexion y reintente",
+      at: fecha,
+      icon: icono,
+      sound: null
+    });
+  }
 });
