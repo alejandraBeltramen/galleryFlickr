@@ -4,6 +4,7 @@
   "description": "An Ionic project",
   "dependencies": {
     "@ionic-native/email-composer": "^3.12.1",
+    "@ionic-native/network": "^3.12.1",
     "@ionic-native/social-sharing": "^3.12.1",
     "cordova": "^7.0.1",
     "gulp": "^3.5.6",
