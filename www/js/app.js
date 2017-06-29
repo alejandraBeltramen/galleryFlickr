@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('galeriaFlikrApp', ['ionic'])
+angular.module('galeriaFlikrApp', ['ionic', 'pascalprecht.translate'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -30,6 +30,15 @@ angular.module('galeriaFlikrApp', ['ionic'])
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
+  })
+  .state('app.preferencias', {
+    url: '/preferencias',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/preferencias.html',
+        controller: 'AppCtrl'
+      }
+    }
   })
   .state('app.gallery', {
     url: '/gallery',
@@ -84,4 +93,18 @@ angular.module('galeriaFlikrApp', ['ionic'])
       sound: null
     });
   }
-});
+})
+
+.run(function lenguaje($translate) {
+    this.setLenguaje = function(){
+      if (typeof navigator.globalization !== "undefined") {
+        //obtengo el lenguaje cortando el string que me devuelve navigator.language
+        var leng = (navigator.language).split("-")[0]; 
+        $translate.use(leng);
+      }
+    }
+    document.addEventListener('deviceReady', function() {
+        setLenguaje();
+    }, false);
+  })
+;

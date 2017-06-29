@@ -1,6 +1,7 @@
 angular.module('galeriaFlikrApp')
   .controller('AppCtrl', function($scope,gallerySvc) {
- 
+    $scope.leng = navigator.language;
+    
     //Inicializar la lista de albumes
     function cargarGallery() {
       return gallerySvc.getAlbumes().then(function(gallery) {
@@ -14,4 +15,8 @@ angular.module('galeriaFlikrApp')
  
     //Carga la lista de albumes cuando se inicia la aplicación 
     cargarGallery();
+
+    $scope.cambiarLenguaje = function(leng) {
+        $translate.use(leng);
+    };
   });
