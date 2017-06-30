@@ -1,18 +1,26 @@
 angular.module('galeriaFlikrApp')
-    .controller("AlbumCtrl", function($scope, $state, $stateParams, $ionicLoading, albumSvc) {
+    .controller("AlbumCtrl", function($scope, $state, $stateParams, $ionicLoading, albumSvc, storageSvc) {
         //cargar las fotos del album 
          if ($stateParams.albumId) {
-            showIonicLoading()
-                .then(obtenerPhotos) //deberia retornar _album para que lo tome la siguiente promesa en su parametro
-                // .then(inicializarOpciones)
-                .then(function(_album) {
+            if(navigator.connection.type !== Connection.NONE) {
+                showIonicLoading()
+                .then(obtenerPhotos)
+                .then(function (_album){
                     $scope.album = _album;
                     $scope.titulo = _album.title;
                     $scope.fotos = _album.photo;
+                    storageSvc.setPhotos(_album);
                     loadDates();
                 })
                 .then($ionicLoading.hide)
                 .catch($ionicLoading.hide);
+            } else {
+                var photos = storageSvc.getPhotos();
+                $scope.album = photos;
+                $scope.titulo = photos.title;
+                $scope.fotos = photos.photo;
+                loadDates();
+            }
         }
 
         function obtenerPhotos() {

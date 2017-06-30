@@ -2,17 +2,17 @@ angular.module('galeriaFlikrApp')
 .service('storageSvc', function($q, $http) {
   var storage = window.localStorage;
 
-  this.setPhotoList = function(photoList){
-    storage.setItem("photoList", JSON.stringify(photoList));
-    return "DONE";
+  this.setPhotos = function(photos){
+    storage.setItem("photos", JSON.stringify(photos));
   }
 
-  this.getPhotoList = function(){
-    var photoList = JSON.parse(storage.getItem("photoList"));
-    return photoList;
+  this.getPhotos = function(){
+    var photos = JSON.parse(storage.getItem("photos"));
+    return photos;
   }
 
   this.setAlbumList = function (albumList) {
+    alert("entro a setAlbumList");
     storage.setItem("albumList", JSON.stringify(albumList));
   }
 
@@ -21,18 +21,13 @@ angular.module('galeriaFlikrApp')
     return albumList;
   }
 
-  this.existPhotoList = function(photoListId){
-    return false;
+  this.setComments = function(comments){
+    storage.setItem("comments", JSON.stringify(comments));
   }
 
-  this.setAlbumInfo = function(albumInfo){
-    storage.setItem("albumInfo", JSON.stringify(albumInfo));
-    return "DONE";
-  }
-
-  this.getALbumInfo = function(){
-    var albumInfo = JSON.parse(storage.getItem("albumInfo"));
-    return albumInfo;
+  this.getComments = function(){
+    var comments = JSON.parse(storage.getItem("comments"));
+    return comments;
   }
 
 });

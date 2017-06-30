@@ -1,18 +1,26 @@
 angular.module('galeriaFlikrApp')
-    .controller("PhotoCtrl", function($scope, $state, $stateParams, $ionicLoading, photoSvc) {
+    .controller("PhotoCtrl", function($scope, $state, $stateParams, $ionicLoading, photoSvc, storageSvc) {
 
             //cargar los comentarios de la foto
-            if ($stateParams.photoId) {
+            if($stateParams.photoId){
+            if(navigator.connection.type !== Connection.NONE) {
                 showIonicLoading()
-                    .then(obtenerComentarios) //deberia retornar _comments para que lo tome la siguiente promesa en su parametro
-                    // .then(inicializarOpciones)
-                    .then(function(_comments) {
-                        $scope.idFoto = _comments.photo_id;
-                        $scope.comentarios = _comments.comment;
-                    })
-                    .then($ionicLoading.hide)
-                    .catch($ionicLoading.hide);
+                .then(obtenerComentarios)
+                .then(function (_comments){
+                    $scope.idFoto = _comments.photo_id;
+                    $scope.comentarios = _comments.comment;
+                    storageSvc.setComments(_comments);
+                })
+                .then($ionicLoading.hide)
+                .catch($ionicLoading.hide);
+            } else {
+                var comments = storageSvc.getComments();
+                if(comments.photo_id === $stateParams.photoId) {
+                   $scope.comentarios = comments.comment; 
+                }
+                $scope.idFoto = comments.photo_id;
             }
+        }
 
             function obtenerComentarios() {
                 return photoSvc.getComments($stateParams.photoId);

@@ -10,7 +10,6 @@ angular.module('galeriaFlikrApp')
                 showIonicLoading()
                 .then(obtenerAlbumes)
                 .then(function (_gallery){
-                    console.log(_gallery);
                     $scope.gallery = _gallery;
                     $scope.onAlbumClick = onAlbumClick;
                     storageSvc.setAlbumList(_gallery);
@@ -18,7 +17,9 @@ angular.module('galeriaFlikrApp')
                 .then($ionicLoading.hide)
                 .catch($ionicLoading.hide);
             } else {
-                $scope.gallery = storageSvc.getAlbumList();
+                var gallery = storageSvc.getAlbumList();
+                $scope.gallery = gallery;
+
             }
 
 
@@ -33,7 +34,7 @@ angular.module('galeriaFlikrApp')
             });
         };
 
-        function onAlbumClick (id){
+        $scope.onAlbumClick = function (id){
             console.log("click en album");
             console.log(id);
             return $state.go('app.album', {'albumId': id});

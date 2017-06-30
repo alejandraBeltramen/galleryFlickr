@@ -22,7 +22,7 @@ angular.module('galeriaFlikrApp', ['ionic', 'pascalprecht.translate'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, translateProvider) {
+.config(function($stateProvider, $urlRouterProvider, $translateProvider) {
     $translateProvider.translations('es', {
       etiqueta_comentarios: "Comentarios",
       etiqueta_vistas: "Vistas",
@@ -38,7 +38,8 @@ angular.module('galeriaFlikrApp', ['ionic', 'pascalprecht.translate'])
       etiqueta_preferencias: "Preferencias",
       etiqueta_lenguajes: "Lenguajes",
       etiqueta_español: "Español",
-      etiqueta_ingles: "Ingles"
+      etiqueta_ingles: "Ingles",
+      etiqueta_volver: "Volver"
     });
     $translateProvider.translations('en', {
       etiqueta_comentarios: "Comments",
@@ -55,7 +56,8 @@ angular.module('galeriaFlikrApp', ['ionic', 'pascalprecht.translate'])
       etiqueta_preferencias: "Preferences",
       etiqueta_lenguajes: "Languages",
       etiqueta_español: "Spanish",
-      etiqueta_ingles: "English"
+      etiqueta_ingles: "English",
+      etiqueta_volver: "Back"
     });
     $translateProvider.preferredLanguage("es");
     $translateProvider.fallbackLanguage("es");

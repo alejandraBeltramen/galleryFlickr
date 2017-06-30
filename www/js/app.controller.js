@@ -1,5 +1,5 @@
 angular.module('galeriaFlikrApp')
-  .controller('AppCtrl', function($scope,gallerySvc) {
+  .controller('AppCtrl', function($scope,gallerySvc,$translate) {
     $scope.leng = navigator.language;
     
     //Inicializar la lista de albumes

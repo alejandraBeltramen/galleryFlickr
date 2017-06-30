@@ -1,15 +1,7 @@
 <ion-view view-title="{{titulo}}">
     <ion-content padding="true" class="card-background-page">
         <ion-list>
-            <ion-item>
-                <ion-label>{{'etiqueta_ordenar' | translate}}</ion-label>
-                <ion-select [(ngModel)]="ordenar">
-                    <ion-option value="fecha">{{'etiqueta_fechacreacion' | translate}}</ion-option>
-                    <ion-option value="nombre">{{'etiqueta_nombre' | translate}}</ion-option>
-                </ion-select>
-            </ion-item>
-            <!--ESTO SE DEBERIA SACAR PORQUE VA A ESTAR CONTEMPLADO EN EL SELECT DE ARRIBA-->
-            <!--LO PONGO PARA PROBAR LA FUNCIONALIDAD EN BROWSER-->
+            
             <button ng-click="sortByDate()">
                 <div>{{'etiqueta_ordenarporfecha' | translate}}</div>
             </button>
@@ -19,8 +11,7 @@
         </ion-list>
         <!--Listado de Fotos-->
         <ion-card class="card" ng-repeat="foto in fotos">
-            <!--TO DO obtener imagen-->
-            <!--<img src="img/advance-card-bttf.png">-->
+            
             <img ng-src="https://farm{{foto.farm}}.staticflickr.com/{{foto.server}}/{{foto.id}}_{{foto.secret}}_n.jpg">
 
             <ion-row>
@@ -41,7 +32,6 @@
                     </button>
                 </ion-col>
                 <ion-col center text-center>
-                    <!--Debería permitir enviar esta foto por email-->
                     <button ion-button icon-left clear small
                             ng-click="sendEmail('https://farm{{foto.farm}}.staticflickr.com/{{foto.server}}/{{foto.id}}_{{foto.secret}}.jpg')">
                         <ion-icon name="md-mail">{{'etiqueta_email' | translate}}</ion-icon>
